@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shuai Yang | Portfolio</title>
+  <meta name="description" content="Shuai Yang's academic portfolio: Embodied AI, VLM, and VLA research." />
+  <style>
+        :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --text: #e6edf3;
+        --muted: #9da7b3;
+        --primary: #58a6ff;
+        --border: #30363d;
+        --shadow: none;
+        --max: 1120px;
+        --radius: 12px;
+        }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .nav {
+        position: sticky;
+        top: 0;
+        background: var(--bg);   /* 或 var(--card) */
+        border-bottom: 1px solid var(--border);
+        }
+    .nav-inner { display:flex; justify-content:space-between; align-items:center; min-height:70px; }
+    .brand span { color: var(--primary); }
+    .nav a {
+        color: var(--text);   /* 白色 */
+        text-decoration: none;
+        font-weight: 400;
+        }
+
+        .nav a:hover {
+        color: var(--primary);
+        }
+    .nav-links { display:flex; gap:16px; color:var(--muted); }
+
+    .hero { padding: 64px 0 32px; }
+    .hero-main {
+      padding: 32px;
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 24px;
+      align-items: center;
+    }
+    .hero-text { }
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      justify-self: end;
+      background: #eef2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 { margin:0 0 12px; font-size: clamp(2.2rem,5vw,4rem); }
+    .subtitle { color: var(--muted); margin-bottom:16px; }
+
+    .tags, .socials { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .chip {
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--text);   /* ← 关键：白色 */
+        font-size: 0.95rem;
+        cursor: pointer;
+        }
+
+    .hero-actions { margin-top:18px; display:flex; gap:12px; }
+    .btn {
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--text);   /* ← 关键：白色 */
+        cursor: pointer;
+        }
+    .btn.primary { background: var(--primary); color:#fff; border:none; }
+
+    section { padding: 18px 0; }
+    .card {
+      padding:24px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+    }
+
+    .research-item {
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:18px;
+      margin-bottom:16px;
+    }
+    .research-item p {
+        font-size: 0.9rem;   /* 比默认小一点 */
+        color: var(--muted);  /* 可选：稍微淡一点，更像论文风格 */
+        line-height: 1.6;
+        margin-top: 6px;
+        }
+    .teaser { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:12px; }
+    .teaser.placeholder { display:flex; align-items:center; justify-content:center; background:#eef2ff; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #0f1122;
+    }
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0a101e;
+    }
+    .video-player video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #e9eefc;
+    }
+    .video-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .video-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    @media(max-width:900px){ 
+      .research-item{grid-template-columns:1fr;} 
+      .hero-main{grid-template-columns:1fr; text-align:center;}
+      .hero-photo{justify-self:center;}
+      .video-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="brand">Shuai<span>Yang</span></div>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#videos">Videos</a>
+      <!-- <a href="#awards">Honors</a> -->
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-text">
+      <h1 id="name"></h1>
+      <p class="subtitle" id="intro"></p>
+      <p class="subtitle" id="introDesc"></p>
+
+      <div class="tags" id="tags"></div>
+      <div class="socials" id="quickLinks"></div>
+
+      <div class="hero-actions">
+        <a class="btn primary" id="emailBtn">Email</a>
+        <a class="btn" id="cvBtn">CV</a>
+        <a class="btn" id="githubBtn">Scholar</a>
+      </div>
+    </div>
+
+    <div class="hero-photo" id="photoBox">
+      <span>Add Photo</span>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <h2>Selected Research & Publications</h2>
+  <div class="card" id="researchList"></div>
+</section>
+
+<section id="videos">
+  <h2>Real-World Policy Deployment</h2>
+  <div class="card">
+    <div class="video-grid" id="videoList"></div>
+  </div>
+</section>
+
+<!-- <section id="awards">
+  <h2>Honors & Awards</h2>
+  <div class="card"><ul id="honors"></ul></div>
+</section> -->
+
+</main>
+
+<script>
+const siteData = {
+  profile: {
+    name: "Shuai Yang",
+    // title: "Embodied AI / VLM / VLA",
+    introDesc: "Shuai Yang works on Embodied AI, with a focus on connecting perception, reasoning, and action in real-world settings. He has explored how robots can follow open-ended instructions, understand the 3D world, and perform complex manipulation tasks. These days, he is interested in learning from large-scale robot data and building systems that generalize beyond narrowly defined tasks.",
+    email: "yangshuai03_3996 at zju.edu.cn",
+    github: "https://scholar.google.com/citations?user=l5HWdWEAAAAJ&hl=en-US",
+    cv: "./assets/resume_25.pdf",
+    photo: "./assets/photo.jpg",
+    tags: ["Embodied AI","Manipulation","VLM","VLA"]
+  },
+  research: [
+    {title:"Causal World Modeling for Robot Control", meta:"Arxiv 2026", desc:"We present LingBot-VA, an autoregressive diffusion framework that unifies video world modeling and policy learning to jointly predict future frames and actions. It features a shared vision-action latent space with a Mixture-of-Transformers, a closed-loop rollout mechanism, and an asynchronous inference pipeline for efficient control. Experiments in simulation and real-world settings demonstrate strong long-horizon manipulation, data efficiency, and generalization, with code and models released to the community.", teaser:"./assets/lingbot_va.jpg"},
+    {title:"A Pragmatic VLA Foundation Model", meta:"Arxiv 2026 (first author/co-author)", desc:"We present LingBot-VLA, a scalable Vision-Language-Action foundation model trained on 20,000 hours of real-world data across 9 dual-arm robot platforms, designed for strong generalization and cost-efficient adaptation. Extensive evaluation on 3 platforms and 100 tasks shows clear superiority over existing methods, demonstrating robust cross-task and cross-platform performance. Our optimized codebase provids 1.5–2.8× speedup, and we release code, models, and benchmarks to advance robot learning.", teaser:"./assets/lingbot_vla.jpg"},
+    {title:"InstructVLA: Vision-Language-Action Intruction Tuning, from Understanding to Manipulation", meta:"ICLR 2026 (first author/co-author)", desc:"We introduce InstructVLA, an end-to-end model that unifies multimodal reasoning and precise action generation while avoiding catastrophic forgetting of VLM capabilities; our Vision-Language-Action Instruction Tuning (VLA-IT) jointly optimizes reasoning and control using a 650K-sample dataset with mixture-of-experts adaptation; the model achieves strong gains in both in-domain and generalization benchmarks, demonstrating scalable reasoning-enhanced manipulation in simulation and real-world settings.", teaser:"./assets/instructvla.jpg"},
+    {title:"CronusVLA: Towards Efficient and Robust Manipulation via Multi-Frame Vision-Language-Action Modeling", meta:"AAAI 2026 Oral (first author/co-author)", desc:"We propose CronusVLA, a unified framework that extends single-frame VLA models to efficient multi-frame modeling via single-frame pretraining and feature-based multi-frame post-training with chunked history aggregation; it overcomes the computational and latency challenges of naive multi-frame inputs while improving performance and robustness; extensive experiments show state-of-the-art results and strong robustness under disturbances, highlighting the effectiveness of scalable multi-frame adaptation for real-world deployment.", teaser:"./assets/cronusvla.jpg"},
+    {title:"PointLLM-V2: Empowering Large Language Models to Better Understand Point Clouds", meta:"TPAMI 2025 (first author/co-author)", desc:"We introduce PointLLM, a framework that enables large language models to understand and reason over 3D point clouds by integrating geometric, appearance, and linguistic features; to address data scarcity, we build a large-scale 1.8M-sample dataset and adopt a two-stage training strategy; the model achieves state-of-the-art performance on new 3D benchmarks, surpassing both 2D/3D baselines and even human annotators in object captioning tasks.", teaser:"./assets/pointllm.jpg"},
+    {title:"GENMANIP: LLM-driven Simulation for Generalizable Instruction-Following Manipulation", meta:"CVPR 2025 (first author/co-author)", desc:"We introduce GenManip, a realistic tabletop simulation platform for studying policy generalization, featuring an LLM-driven pipeline that generates diverse tasks from 10K annotated 3D objects; we also propose GenManip-Bench, a 200-scenario benchmark with human-in-the-loop refinement for systematic evaluation; experiments show that while data scaling improves end-to-end policies, modular systems with foundation models achieve stronger generalization across diverse scenarios.", teaser:"./assets/genmanip.jpg"}
+  ],
+  videos: [
+    {
+    title: "LingBot-VLA",
+    meta: "Enables precise spatial perception with only 50 training episodes",
+    src: "https://gw.alipayobjects.com/v/huamei_u94ywh/afts/video/Cc6nT7HzlD0AAAAAgSAAAAgAfoeUAQBr",
+    poster: "",
+    desc: "We design tasks to evaluate our model’s ability to perceive transparent objects (e.g., glass vases) and accurately insert flowers into them, with all demonstration videos presented in their original form without any editing or removed pauses."
+    },
+    {
+    title: "LingBot-VA",
+    meta: "Enables long horizon manipulation with only 50 training episodes",
+    src: "https://gw.alipayobjects.com/v/huamei_u94ywh/afts/video/MEv2SahrsosAAAAAgHAAAAgADkxfAQFr",
+    poster: "",
+    desc: "We design a task requiring dexterous manipulation using a utility knife to precisely cut a sealed package to validate our model’s fine grained perception and control; the full inference latency of WAM is faithfully preserved and the video is shown without any speed up."
+    }
+  ],
+  honors:["ZJU Scholarship"]
+};
+
+const $ = s=>document.querySelector(s);
+
+function render(){
+  const {profile,research,videos,honors}=siteData;
+  $("#name").textContent=profile.name;
+  $("#intro").textContent=profile.title;
+  $("#introDesc").textContent=profile.introDesc;
+
+  const tags=$("#tags");
+  profile.tags.forEach(t=>tags.appendChild(Object.assign(document.createElement("span"),{className:"chip",textContent:t})));
+
+//   const links=$("#quickLinks");
+//   [
+//     {label:"Email",href:`mailto:${profile.email}`},
+//     {label:"GitHub",href:profile.github},
+//     {label:"CV",href:profile.cv}
+//   ].forEach(l=>{
+//     const a=document.createElement("a");
+//     a.className="chip"; a.textContent=l.label; a.href=l.href;
+//     links.appendChild(a);
+//   });
+
+  $("#emailBtn").href=`mailto:${profile.email}`;
+  $("#cvBtn").href=profile.cv;
+  $("#githubBtn").href=profile.github;
+
+  if(profile.photo){
+    const img=document.createElement("img");
+    img.src=profile.photo;
+    $("#photoBox").innerHTML="";
+    $("#photoBox").appendChild(img);
+  }
+
+  const rwrap=$("#researchList");
+  research.forEach(r=>{
+    const div=document.createElement("div");
+    div.className="research-item";
+    div.innerHTML=`
+      ${r.teaser?`<img class="teaser" src="${r.teaser}">`:`<div class="teaser placeholder">teaser</div>`}
+      <div><b>${r.title}</b><br><small>${r.meta}</small><p>${r.desc}</p></div>`;
+    rwrap.appendChild(div);
+  });
+
+    const vwrap=$("#videoList");
+  videos.forEach(v=>{
+    const div=document.createElement("div");
+    div.className="video-item";
+    div.innerHTML=`
+      <div class="video-player">
+        <video controls playsinline preload="metadata" ${v.poster ? `poster="${v.poster}"` : ""}>
+          <source src="${v.src}" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-title">${v.title}</div>
+      <div class="video-meta"><div>${v.meta}</div><div>${v.desc || ""}</div></div>`;
+    vwrap.appendChild(div);
+  });
+
+//   const h=$("#honors");
+//   honors.forEach(x=>h.appendChild(Object.assign(document.createElement("li"),{textContent:x})));
+}
+render();
+</script>
+
+</body>
+</html>
