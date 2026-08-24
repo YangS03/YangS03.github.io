@@ -3,8 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shuai Yang | Portfolio</title>
-  <meta name="description" content="Shuai Yang's academic portfolio: Embodied AI, VLM, and VLA research." />
+  <title>Shuai Yang | Embodied AI, VLM &amp; VLA Research</title>
+  <meta name="description" content="Shuai Yang is an Embodied AI researcher working on robot manipulation, vision-language models (VLMs), and vision-language-action models (VLAs)." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://yangs03.github.io/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Shuai Yang | Embodied AI, VLM &amp; VLA Research" />
+  <meta property="og:description" content="Academic homepage of Shuai Yang, an Embodied AI researcher working on robot manipulation, VLMs, and VLAs." />
+  <meta property="og:url" content="https://yangs03.github.io/" />
+  <meta property="og:image" content="https://yangs03.github.io/assets/photo.jpg" />
+  <meta property="profile:first_name" content="Shuai" />
+  <meta property="profile:last_name" content="Yang" />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "https://yangs03.github.io/",
+    "name": "Shuai Yang | Embodied AI, VLM & VLA Research",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://yangs03.github.io/#shuai-yang",
+      "name": "Shuai Yang",
+      "url": "https://yangs03.github.io/",
+      "image": "https://yangs03.github.io/assets/photo.jpg",
+      "description": "Embodied AI researcher working on robot manipulation, vision-language models, and vision-language-action models.",
+      "knowsAbout": [
+        "Embodied AI",
+        "Robot Manipulation",
+        "Vision-Language Models",
+        "Vision-Language-Action Models"
+      ],
+      "sameAs": [
+        "https://github.com/YangS03",
+        "https://scholar.google.com/citations?user=l5HWdWEAAAAJ&hl=en-US",
+        "https://huggingface.co/ShuaiYang03"
+      ]
+    }
+  }
+  </script>
   <style>
         :root {
         --bg: #0d1117;
@@ -99,6 +138,7 @@
         color: var(--text);   /* ← 关键：白色 */
         cursor: pointer;
         }
+    #emailBtn { cursor: default; }
     .btn.primary { background: var(--primary); color:#fff; border:none; }
 
     section { padding: 18px 0; }
@@ -187,15 +227,19 @@
 <section class="hero">
   <div class="hero-main">
     <div class="hero-text">
-      <h1 id="name"></h1>
-      <p class="subtitle" id="intro"></p>
-      <p class="subtitle" id="introDesc"></p>
+      <h1 id="name">Shuai Yang</h1>
+      <p class="subtitle" id="introDesc">Shuai Yang works on Embodied AI, with a focus on connecting perception, reasoning, and action in real-world settings. He has explored how robots can follow open-ended instructions, understand the 3D world, and perform complex manipulation tasks. These days, he is interested in learning from large-scale robot data and building systems that generalize beyond narrowly defined tasks.</p>
 
-      <div class="tags" id="tags"></div>
+      <div class="tags" id="tags">
+        <span class="chip">Embodied AI</span>
+        <span class="chip">Manipulation</span>
+        <span class="chip">VLM</span>
+        <span class="chip">VLA</span>
+      </div>
       <div class="socials" id="quickLinks"></div>
 
       <div class="hero-actions">
-        <a class="btn primary" id="emailBtn">Email</a>
+        <span class="btn" id="emailBtn">shuaiyang2003 at gmail dot com</span>
         <a class="btn" id="cvBtn">CV</a>
         <a class="btn" id="githubBtn">Scholar</a>
       </div>
@@ -232,7 +276,7 @@ const siteData = {
     name: "Shuai Yang",
     // title: "Embodied AI / VLM / VLA",
     introDesc: "Shuai Yang works on Embodied AI, with a focus on connecting perception, reasoning, and action in real-world settings. He has explored how robots can follow open-ended instructions, understand the 3D world, and perform complex manipulation tasks. These days, he is interested in learning from large-scale robot data and building systems that generalize beyond narrowly defined tasks.",
-    email: "yangshuai03_3996 at zju.edu.cn",
+    email: "shuaiyang2003 at gmail dot com",
     github: "https://scholar.google.com/citations?user=l5HWdWEAAAAJ&hl=en-US",
     cv: "./assets/resume_25.pdf",
     photo: "./assets/photo.jpg",
@@ -270,10 +314,10 @@ const $ = s=>document.querySelector(s);
 function render(){
   const {profile,research,videos,honors}=siteData;
   $("#name").textContent=profile.name;
-  $("#intro").textContent=profile.title;
   $("#introDesc").textContent=profile.introDesc;
 
   const tags=$("#tags");
+  tags.replaceChildren();
   profile.tags.forEach(t=>tags.appendChild(Object.assign(document.createElement("span"),{className:"chip",textContent:t})));
 
 //   const links=$("#quickLinks");
@@ -287,7 +331,7 @@ function render(){
 //     links.appendChild(a);
 //   });
 
-  $("#emailBtn").href=`mailto:${profile.email}`;
+  $("#emailBtn").textContent=profile.email;
   $("#cvBtn").href=profile.cv;
   $("#githubBtn").href=profile.github;
 
