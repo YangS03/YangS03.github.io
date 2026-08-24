@@ -138,7 +138,24 @@
         color: var(--text);   /* ← 关键：白色 */
         cursor: pointer;
         }
-    #emailBtn { cursor: default; }
+    #emailBtn { cursor: pointer; }
+    .email-details { position: relative; }
+    .email-details summary { list-style: none; cursor: pointer; }
+    .email-details summary::-webkit-details-marker { display: none; }
+    .email-address {
+      position: absolute;
+      z-index: 1;
+      top: calc(100% + 10px);
+      left: 0;
+      width: max-content;
+      max-width: min(320px, calc(100vw - 64px));
+      padding: 10px 12px;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow-wrap: anywhere;
+    }
     .btn.primary { background: var(--primary); color:#fff; border:none; }
 
     section { padding: 18px 0; }
@@ -239,7 +256,10 @@
       <div class="socials" id="quickLinks"></div>
 
       <div class="hero-actions">
-        <span class="btn" id="emailBtn">shuaiyang2003 at gmail dot com</span>
+        <details class="email-details">
+          <summary class="btn" id="emailBtn">Email</summary>
+          <span class="email-address" id="emailAddress">shuaiyang2003 at gmail dot com</span>
+        </details>
         <a class="btn" id="cvBtn">CV</a>
         <a class="btn" id="githubBtn">Scholar</a>
       </div>
@@ -331,7 +351,7 @@ function render(){
 //     links.appendChild(a);
 //   });
 
-  $("#emailBtn").textContent=profile.email;
+  $("#emailAddress").textContent=profile.email;
   $("#cvBtn").href=profile.cv;
   $("#githubBtn").href=profile.github;
 
