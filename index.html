@@ -285,6 +285,7 @@
       filter: saturate(0.86);
       transition: filter 240ms ease;
     }
+    .teaser.contain { aspect-ratio: auto; height: auto; object-fit: contain; background: #fff; }
     .research-item:hover .teaser { filter: saturate(1.05); }
     .teaser.placeholder { display: flex; align-items: center; justify-content: center; }
 
@@ -455,6 +456,8 @@ const siteData = {
     tags: ["Embodied AI","Manipulation","VLM","VLA"]
   },
   research: [
+    {title:"Native Video-Action Pretraining for Generalizable Robot Control", meta:"Arxiv 2026 (Core Contributor)", desc:"We present LingBot-VA 2.0, a video-action foundation model natively pretrained for robot control. It combines a semantic visual-action tokenizer, causal pretraining, and a sparse mixture-of-experts backbone to learn aligned representations of observations and actions. An asynchronous inference scheme grounds predictions in the latest observations, enabling real-time closed-loop control and few-shot generalization across complex manipulation tasks.", paper:"https://arxiv.org/abs/2607.08639", teaser:"./assets/lingbot_va2.png", teaserAlt:"LingBot-VA 2.0 architecture: semantic visual-action tokenization, causal video-action modeling, and asynchronous robot control.", teaserFit:"contain"},
+    {title:"From Foundation to Application: Improving VLA Models in Practice", meta:"Arxiv 2026", desc:"We present LingBot-VLA 2.0, advancing practical robot deployment through broader pretraining data, expanded action spaces, and predictive dynamics modeling. Pretrained on 50,000 hours of robot trajectories across 20 configurations and 10,000 hours of egocentric human videos, it supports whole-body control and uses semantic and geometric future prediction to improve temporal reasoning. Evaluations demonstrate cross-embodiment generalization and long-horizon mobile manipulation.", paper:"https://arxiv.org/abs/2607.06403", teaser:"./assets/lingbot_vla2.png", teaserAlt:"LingBot-VLA 2.0 framework: unified whole-body action space, mixture-of-experts action modeling, and dual-query distillation.", teaserFit:"contain"},
     {title:"Causal World Modeling for Robot Control", meta:"Arxiv 2026", desc:"We present LingBot-VA, an autoregressive diffusion framework that unifies video world modeling and policy learning to jointly predict future frames and actions. It features a shared vision-action latent space with a Mixture-of-Transformers, a closed-loop rollout mechanism, and an asynchronous inference pipeline for efficient control. Experiments in simulation and real-world settings demonstrate strong long-horizon manipulation, data efficiency, and generalization, with code and models released to the community.", paper:"https://arxiv.org/abs/2601.21998", teaser:"./assets/lingbot_va.jpg"},
     {title:"A Pragmatic VLA Foundation Model", meta:"Arxiv 2026 (first author/co-author)", desc:"We present LingBot-VLA, a scalable Vision-Language-Action foundation model trained on 20,000 hours of real-world data across 9 dual-arm robot platforms, designed for strong generalization and cost-efficient adaptation. Extensive evaluation on 3 platforms and 100 tasks shows clear superiority over existing methods, demonstrating robust cross-task and cross-platform performance. Our optimized codebase provids 1.5–2.8× speedup, and we release code, models, and benchmarks to advance robot learning.", paper:"https://arxiv.org/abs/2601.18692", teaser:"./assets/lingbot_vla.jpg"},
     {title:"InstructVLA: Vision-Language-Action Intruction Tuning, from Understanding to Manipulation", meta:"ICLR 2026 (first author/co-author)", desc:"We introduce InstructVLA, an end-to-end model that unifies multimodal reasoning and precise action generation while avoiding catastrophic forgetting of VLM capabilities; our Vision-Language-Action Instruction Tuning (VLA-IT) jointly optimizes reasoning and control using a 650K-sample dataset with mixture-of-experts adaptation; the model achieves strong gains in both in-domain and generalization benchmarks, demonstrating scalable reasoning-enhanced manipulation in simulation and real-world settings.", paper:"https://arxiv.org/abs/2507.17520", teaser:"./assets/instructvla.jpg"},
@@ -541,7 +544,7 @@ function render(){
     const div=document.createElement("div");
     div.className="research-item";
     div.innerHTML=`
-      ${r.teaser?`<img class="teaser" src="${r.teaser}">`:`<div class="teaser placeholder">teaser</div>`}
+      ${r.teaser?`<img class="teaser${r.teaserFit === 'contain' ? ' contain' : ''}" src="${r.teaser}" alt="${r.teaserAlt || r.title}" loading="lazy">`:`<div class="teaser placeholder">teaser</div>`}
       <div><h3 class="research-title"><a href="${r.paper}" target="_blank" rel="noopener noreferrer">${r.title}</a></h3><small>${r.meta}</small><p>${r.desc}</p></div>`;
     rwrap.appendChild(div);
   });
