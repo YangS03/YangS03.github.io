@@ -1,0 +1,16 @@
+# Independent Overleaf project; do not publish its sources with the website.
+/overleaf-project/
+/OVERLEAF-SYNC.md
+
+# Local previews, inspection downloads, and generated build files.
+/.edge-preview/
+/output/
+/review/
+/preview.png
+/videos-preview.png
+/task-five-contact.jpg
+/task-six-contact.jpg
+/scholar-paper-*.html
+/review_frames.py
+/assets/flower-insertion-review.mp4
+/assets/package-opening-review.mp4
